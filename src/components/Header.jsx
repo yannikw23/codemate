@@ -16,7 +16,7 @@ const Header = () => {
         top={0}
         left={0}
       >
-        <Container maxW='6xl'>
+        <Container maxW='4xl'>
           <Text
             fontSize='4xl'
             bgGradient='linear(to-l, #FF8888,#948BFF)'

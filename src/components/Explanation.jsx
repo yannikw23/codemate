@@ -15,19 +15,27 @@ const Explanation = () => {
 
   return (
     <Stack
-      bgGradient='linear(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)'
-      p={6}
-      px={20}
-      rounded='md'
-      w={{ base: '80vw', lg: '50vw' }}
+      bgColor='gray.800'
+      p={{ base: 8, md: 6 }}
+      px={{ base: 8, md: 20 }}
+      rounded='3xl'
+      w={{ base: 'full', lg: '50vw' }}
       alignSelf='center'
       spacing={10}
     >
       <ScaleFade initialScale={0.9} in={isOpen}>
-        <Text fontWeight='bold' textAlign='center' fontSize='3xl'>
-          What is means
-        </Text>
-        <Text style={{ whiteSpace: 'pre-line' }}>{explanation[0]?.text}</Text>
+        <Stack spacing={4}>
+          <Text
+            fontWeight='bold'
+            textAlign='center'
+            fontSize='3xl'
+            bgGradient='linear(to-r,#b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)'
+            bgClip='text'
+          >
+            What it means...
+          </Text>
+          <Text style={{ whiteSpace: 'pre-line' }}>{`1. ${explanation[0]?.text}`}</Text>
+        </Stack>
       </ScaleFade>
     </Stack>
   );

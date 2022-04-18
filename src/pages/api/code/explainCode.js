@@ -19,16 +19,15 @@ const getExplanationFromOpenAI = async (code) => {
     const response = await openai.createCompletion('text-davinci-002', {
       prompt: codeWithPrompt,
       temperature: 0,
-      max_tokens: 500,
+      max_tokens: 1000,
       top_p: 1.0,
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
       stop: ['"""'],
     });
 
-    console.log('response', response);
     const { data } = response;
-    console.log('data', data);
+
     return data;
   } catch (error) {
     console.log('error in ai', error.response);

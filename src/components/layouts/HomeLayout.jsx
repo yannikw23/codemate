@@ -6,7 +6,7 @@ const HomeLayout = ({ children }) => {
   return (
     <Stack w='100vw' minH='100vh' bgColor='gray.900' color='white' alignItems={'center'}>
       <Header />
-      <Container maxW='6xl' pt={4} pb={8}>
+      <Container maxW='4xl' py={4}>
         {children}
       </Container>
     </Stack>

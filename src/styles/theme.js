@@ -15,9 +15,6 @@ const theme = extendTheme({
       // 1. We can update the base styles
       baseStyle: {
         fontWeight: 'bold', // Normally, it is "semibold"
-        _hover: {
-          bgColor: 'pink.900',
-        },
       },
       // 2. We can add a new button size or extend existing
       sizes: {
@@ -32,6 +29,11 @@ const theme = extendTheme({
         'with-shadow': {
           bg: 'red.400',
           boxShadow: '0 0 2px 2px #efdfde',
+        },
+        ghost: {
+          _hover: {
+            bgColor: 'pink.400',
+          },
         },
         // 4. We can override existing variants
         solid: (props) => ({
