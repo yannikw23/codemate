@@ -84,15 +84,7 @@ const CodeInput = () => {
             minHeight: '100px',
           }}
         />
-        <Button
-          display={{ base: 'none', md: 'flex' }}
-          position='absolute'
-          top={4}
-          right={6}
-          variant='ghost'
-          size='xs'
-          onClick={handleRandom}
-        >
+        <Button position='absolute' top={{ base: 0, md: 4 }} right={{ base: 0, md: 6 }} variant='ghost' size='xs' onClick={handleRandom}>
           Random
         </Button>
       </Stack>
