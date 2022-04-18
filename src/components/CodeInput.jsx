@@ -28,7 +28,8 @@ const CodeInput = () => {
   const onSubmit = async () => {
     setLoading(true);
     try {
-      const hasError = checkInputForErrors();
+      const hasError = checkInputForErrors(code);
+      if (hasError) throw new Error('Please check your input.');
       const res = await fetch(`${API_URL}/api/code/explainCode`, {
         method: 'POST',
         body: JSON.stringify({ input: code }),
@@ -85,10 +86,10 @@ const CodeInput = () => {
       <Button
         bgGradient='linear(to right,#b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)'
         animation='gradient-animation 10s ease infinite'
-        _hover={{}}
+        w={{ base: 'full', lg: '50vw' }}
         onClick={onSubmit}
         isLoading={loading}
-        w='full'
+        _hover={{}}
       >
         Explain this snippet
       </Button>
