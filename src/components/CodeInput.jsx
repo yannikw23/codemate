@@ -9,9 +9,10 @@ import { showErrorToast } from '../lib/utils/toast';
 
 const MAX_INPUT_LENGTH = 1000;
 const API_URL = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_VERCEL_URL : process.env.NEXT_PUBLIC_API_URL;
+const INITIAL_EDITOR_VALUE = `function add(a, b) {\n  return a + b;\n}`;
 
 const CodeInput = () => {
-  const [code, setCode] = React.useState(`function add(a, b) {\n  return a + b;\n}`);
+  const [code, setCode] = useState(INITIAL_EDITOR_VALUE);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
 
@@ -54,16 +55,26 @@ const CodeInput = () => {
 
   return (
     <VStack>
-      <Stack w={{ base: 'full', lg: '50vw' }} rounded='md' bgColor='gray.800' p={4} _focus={{ border: 'none' }} position='relative'>
+      <Stack
+        w={{ base: 'full', lg: '50vw' }}
+        rounded='md'
+        bgColor='gray.800'
+        p={4}
+        _focus={{ border: 'none' }}
+        position='relative'
+        maxH='60vh'
+      >
         <Editor
           value={code}
           onValueChange={(code) => setCode(code)}
           maxLength={MAX_INPUT_LENGTH}
           highlight={(code) => highlight(code, languages.js)}
           padding={10}
+          placeholder={INITIAL_EDITOR_VALUE}
           style={{
             fontFamily: '"Fira code", "Fira Mono", monospace',
             fontSize: '1rem',
+            minHeight: '100px',
           }}
         />
         <Button display={{ base: 'none', md: 'flex' }} position='absolute' top={4} right={6} variant='ghost' size='xs'>
