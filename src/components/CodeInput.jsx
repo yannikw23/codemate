@@ -7,7 +7,7 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import { showErrorToast } from '../lib/utils/toast';
 
-const MAX_INPUT_LENGTH = 50;
+const MAX_INPUT_LENGTH = 1000;
 const API_URL = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_VERCEL_URL : process.env.NEXT_PUBLIC_API_URL;
 
 const CodeInput = () => {
@@ -72,7 +72,7 @@ const CodeInput = () => {
       </Stack>
 
       <Button
-        bgGradient='linear(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)'
+        bgGradient='linear(to right,#b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)'
         animation='gradient-animation 10s ease infinite'
         _hover={{}}
         onClick={onSubmit}
