@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { Button, Input, Stack, Textarea, VStack } from '@chakra-ui/react';
+import { Button, Stack, useToast, VStack } from '@chakra-ui/react';
 import CodeContext from './context/CodeContext';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
+import { showErrorToast } from '../lib/utils/toast';
 
 const API_URL = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_VERCEL_URL : process.env.NEXT_PUBLIC_API_URL;
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
@@ -12,6 +13,7 @@ console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 const CodeInput = () => {
   const [code, setCode] = React.useState(`function add(a, b) {\n  return a + b;\n}`);
   const [loading, setLoading] = useState(false);
+  const toast = useToast();
 
   const { setExplanation } = useContext(CodeContext);
 
@@ -35,6 +37,7 @@ const CodeInput = () => {
 
       setExplanation(choices);
     } catch (error) {
+      showErrorToast(toast, error.message);
       console.log('error', error);
     } finally {
       setLoading(false);
@@ -43,7 +46,7 @@ const CodeInput = () => {
 
   return (
     <VStack>
-      <Stack w={'50vw'} rounded='md' bgColor='gray.700' p={4} _focus={{ border: 'none' }} position='relative'>
+      <Stack w={{ base: '80vw', lg: '50vw' }} rounded='md' bgColor='gray.700' p={4} _focus={{ border: 'none' }} position='relative'>
         <Editor
           value={code}
           onValueChange={(code) => setCode(code)}
