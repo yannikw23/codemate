@@ -7,8 +7,9 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import { showErrorToast } from '../lib/utils/toast';
 
+import { getRandomCodeSnippet } from '../lib/utils/code';
+
 const MAX_INPUT_LENGTH = 1000;
-const API_URL = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_VERCEL_URL : process.env.NEXT_PUBLIC_API_URL;
 const INITIAL_EDITOR_VALUE = `function add(a, b) {\n  return a + b;\n}`;
 
 const CodeInput = () => {
@@ -17,6 +18,11 @@ const CodeInput = () => {
   const toast = useToast();
 
   const { setExplanation } = useContext(CodeContext);
+
+  const handleRandom = () => {
+    const random = getRandomCodeSnippet();
+    setCode(random);
+  };
 
   const checkInputForErrors = (input) => {
     if (!input || input.length < 1) return true;
@@ -30,7 +36,7 @@ const CodeInput = () => {
     try {
       const hasError = checkInputForErrors(code);
       if (hasError) throw new Error('Please check your input.');
-      const res = await fetch(`${API_URL}/api/code/explainCode`, {
+      const res = await fetch(`/api/code/explainCode`, {
         method: 'POST',
         body: JSON.stringify({ input: code }),
         headers: {
@@ -78,7 +84,15 @@ const CodeInput = () => {
             minHeight: '100px',
           }}
         />
-        <Button display={{ base: 'none', md: 'flex' }} position='absolute' top={4} right={6} variant='ghost' size='xs'>
+        <Button
+          display={{ base: 'none', md: 'flex' }}
+          position='absolute'
+          top={4}
+          right={6}
+          variant='ghost'
+          size='xs'
+          onClick={handleRandom}
+        >
           Random
         </Button>
       </Stack>
