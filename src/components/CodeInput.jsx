@@ -6,7 +6,7 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NODE_ENV === 'production' ? process.env.VERCEL_URL : process.env.NEXT_PUBLIC_API_URL;
 
 const CodeInput = () => {
   const [code, setCode] = React.useState(`function add(a, b) {\n  return a + b;\n}`);
