@@ -16,20 +16,21 @@ const Home = () => {
         setExplanation,
       }}
     >
-      <Stack spacing={10}>
-        <Stack>
-          <Heading fontSize='6xl' textAlign='center'>
-            Code explained.
-          </Heading>
-
-          <Text textAlign='center' fontSize='xl' variant='gradient'>
-            Understand code in seconds - powered by AI.
-          </Text>
+      <Stack minH='90vh' justifyContent='space-between' w='full'>
+        <Stack spacing={10}>
+          <Stack spacing={0}>
+            <Heading fontSize='6xl' textAlign='center'>
+              Code explained.
+            </Heading>
+            <Text textAlign='center' fontSize='xl'>
+              Understand code in seconds - powered by AI.
+            </Text>
+          </Stack>
+          <CodeInput />
+          <Explanation />
         </Stack>
-        <CodeInput />
-        <Explanation />
+        <Footer />
       </Stack>
-      <Footer />
     </CodeContext.Provider>
   );
 };

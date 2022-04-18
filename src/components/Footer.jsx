@@ -1,10 +1,10 @@
-import { Box, Link, Text } from '@chakra-ui/react';
+import { Box, Container, Link, Text } from '@chakra-ui/react';
 
 import React from 'react';
 
 const Footer = () => {
   return (
-    <Box w='full' color='gray.600'>
+    <Container as='footer' role='contentinfo' w='full' color='gray.600' p={4} alignSelf='center'>
       <Text textAlign='center'>
         built in sf &amp; munich by{' '}
         <Link isExternal href={'https://twitter.com/yannik_wo'}>
@@ -12,7 +12,7 @@ const Footer = () => {
         </Link>{' '}
         with help of OpenAI.
       </Text>
-    </Box>
+    </Container>
   );
 };
 
