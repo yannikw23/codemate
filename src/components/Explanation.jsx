@@ -27,6 +27,7 @@ const Explanation = () => {
         <Stack spacing={4}>
           <Text
             fontWeight='bold'
+            width='max-content'
             textAlign='center'
             fontSize='3xl'
             bgGradient='linear(to-r,#b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)'
