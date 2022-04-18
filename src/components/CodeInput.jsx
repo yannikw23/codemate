@@ -7,8 +7,8 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import { showErrorToast } from '../lib/utils/toast';
 
+const MAX_INPUT_LENGTH = 50;
 const API_URL = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_VERCEL_URL : process.env.NEXT_PUBLIC_API_URL;
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 
 const CodeInput = () => {
   const [code, setCode] = React.useState(`function add(a, b) {\n  return a + b;\n}`);
@@ -17,9 +17,17 @@ const CodeInput = () => {
 
   const { setExplanation } = useContext(CodeContext);
 
+  const checkInputForErrors = (input) => {
+    if (!input || input.length < 1) return true;
+    if (input.length > MAX_INPUT_LENGTH) return true;
+
+    return false;
+  };
+
   const onSubmit = async () => {
     setLoading(true);
     try {
+      const hasError = checkInputForErrors();
       const res = await fetch(`${API_URL}/api/code/explainCode`, {
         method: 'POST',
         body: JSON.stringify({ input: code }),
@@ -46,10 +54,11 @@ const CodeInput = () => {
 
   return (
     <VStack>
-      <Stack w={{ base: '80vw', lg: '50vw' }} rounded='md' bgColor='gray.700' p={4} _focus={{ border: 'none' }} position='relative'>
+      <Stack w={{ base: 'full', lg: '50vw' }} rounded='md' bgColor='gray.800' p={4} _focus={{ border: 'none' }} position='relative'>
         <Editor
           value={code}
           onValueChange={(code) => setCode(code)}
+          maxLength={MAX_INPUT_LENGTH}
           highlight={(code) => highlight(code, languages.js)}
           padding={10}
           style={{
@@ -57,7 +66,7 @@ const CodeInput = () => {
             fontSize: '1rem',
           }}
         />
-        <Button position='absolute' top={4} right={4} variant='ghost' size='xs'>
+        <Button display={{ base: 'none', md: 'flex' }} position='absolute' top={4} right={6} variant='ghost' size='xs'>
           Random
         </Button>
       </Stack>
@@ -68,8 +77,9 @@ const CodeInput = () => {
         _hover={{}}
         onClick={onSubmit}
         isLoading={loading}
+        w='full'
       >
-        Explain
+        Explain this snippet
       </Button>
     </VStack>
   );
