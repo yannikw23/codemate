@@ -2,8 +2,10 @@ import { ScaleFade, Stack, Text, useDisclosure } from '@chakra-ui/react';
 import React, { useEffect, useContext } from 'react';
 import CodeContext from './context/CodeContext';
 
+import ReactMarkdown from 'react-markdown';
+
 const Explanation = () => {
-  const { explanation } = useContext(CodeContext);
+  const { explanation, loading } = useContext(CodeContext);
   const { isOpen, onToggle } = useDisclosure();
 
   useEffect(() => {
@@ -11,11 +13,11 @@ const Explanation = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [explanation]);
 
-  if (!explanation || explanation?.length < 1) return null;
+  if (!explanation || explanation?.length < 1 || loading) return null;
 
   return (
     <Stack
-      bgColor='gray.800'
+      bgColor='gray.700'
       p={{ base: 8, md: 6 }}
       px={{ base: 8, md: 20 }}
       rounded='3xl'
@@ -35,7 +37,7 @@ const Explanation = () => {
           >
             What it means...
           </Text>
-          <Text style={{ whiteSpace: 'pre-line' }}>{`1. ${explanation[0]?.text}`}</Text>
+          <ReactMarkdown style={{ whiteSpace: 'pre-line' }}>{`1. ${explanation[0]?.text}`}</ReactMarkdown>
         </Stack>
       </ScaleFade>
     </Stack>

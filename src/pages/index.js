@@ -8,12 +8,15 @@ import Footer from '../components/Footer';
 
 const Home = () => {
   const [explanation, setExplanation] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   return (
     <CodeContext.Provider
       value={{
         explanation,
         setExplanation,
+        loading,
+        setLoading,
       }}
     >
       <Stack minH='90vh' justifyContent='space-between' w='full'>
