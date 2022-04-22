@@ -38,8 +38,8 @@ const getExplanationFromOpenAI = async (code, params) => {
     temperature: convert_to_float(params?.temperature) || 1,
     max_tokens: MAX_TOKENS,
     top_p: 1.0,
-    frequency_penalty: 0.0,
-    presence_penalty: 0.0,
+    frequency_penalty: convert_to_float(params?.frequencyPenalty) || 0.0,
+    presence_penalty: convert_to_float(params?.presencePenalty) || 0.0,
     stop: ['"""'],
   });
 
