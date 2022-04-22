@@ -26,12 +26,12 @@ class AppDocument extends Document {
           <meta property='og:title' content='CodeMate - code explained' />
           <meta property='og:description' content='Understand code quicker. Get coding faster.' />
           <meta property='og:site_name' content='CodeMate' />
-          <meta property='og:image' content='https://ibb.co/ZLVk3qd' />
+          <meta property='og:image' content='https://i.ibb.co/FxKj9R6/codemateogimage.png' />
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:site' content='@yannik_wo' />
           <meta name='twitter:title' content='CodeMate - code explained.' />
           <meta name='twitter:description' content='Understand code in seconds - powered by AI.' />
-          <meta name='twitter:image' content='https://ibb.co/ZLVk3qd' />
+          <meta name='twitter:image' content='https://i.ibb.co/FxKj9R6/codemateogimage.png' />
         </Head>
 
         <body>
