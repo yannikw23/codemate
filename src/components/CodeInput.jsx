@@ -12,7 +12,7 @@ import { getRandomCodeSnippet } from '../lib/utils/code';
 import { track } from '../lib/utils/analytics';
 import AIConfig from './Config';
 
-const MAX_INPUT_LENGTH = 1000;
+const MAX_INPUT_LENGTH = 5000;
 const INITIAL_EDITOR_VALUE = `function add(a, b) {\n  return a + b;\n}`;
 
 const CodeInput = () => {

@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const { Configuration, OpenAIApi } = require('openai');
 const OPENAI_KEY = process.env.OPENAI_API_KEY;
-const MAX_TOKENS = 1000;
+const MAX_TOKENS = 5000;
 
 /**
  * Function to convert string to float value
