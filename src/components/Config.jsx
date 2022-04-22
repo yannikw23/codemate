@@ -85,7 +85,7 @@ const Config = ({ params, setParams, isOpen, onClose }) => {
                   min={0}
                   step={0.1}
                   onChange={(value) => handleSetParams('frequencyPenalty', value)}
-                  defaultValue={0}
+                  defaultValue={params?.frequencyPenalty || 0}
                   value={params?.frequencyPenalty}
                 >
                   <NumberInputField id='amount' />
@@ -113,7 +113,7 @@ const Config = ({ params, setParams, isOpen, onClose }) => {
                   min={0}
                   step={0.1}
                   onChange={(value) => handleSetParams('presencePenalty', value)}
-                  defaultValue={0}
+                  defaultValue={params?.presencePenalty || 0}
                   value={params?.presencePenalty}
                 >
                   <NumberInputField id='amount' />
