@@ -16,28 +16,22 @@ class AppDocument extends Document {
 
           <link rel='shortcut icon' href='/favicon.ico' />
 
-          <meta title='dcode - code explained.' />
+          <meta title='CodeMate - Code explained by AI.' />
 
           <meta charSet='utf-8' />
           <meta name='description' content='Understand code in seconds - powered by AI.' />
 
           <meta property='og:url' content={process.env.NEXT_PUBLIC_VERCEL_URL} />
           <meta property='og:type' content='website' />
-          <meta property='og:title' content='dcode - code explained' />
+          <meta property='og:title' content='CodeMate - code explained' />
           <meta property='og:description' content='Understand code quicker. Get coding faster.' />
-          <meta property='og:site_name' content='BuildSpace' />
-          <meta
-            property='og:image'
-            content='https://api.typedream.com/v0/document/public/402bf955-aac0-47d5-9f7f-2ba376e66764_fb_jpeg.jpeg?bucket=document'
-          />
+          <meta property='og:site_name' content='CodeMate' />
+          <meta property='og:image' content='https://ibb.co/ZLVk3qd' />
           <meta name='twitter:card' content='summary_large_image' />
-          <meta name='twitter:site' content='@_buildspace' />
-          <meta name='twitter:title' content='buildspace' />
+          <meta name='twitter:site' content='@yannik_wo' />
+          <meta name='twitter:title' content='CodeMate - code explained.' />
           <meta name='twitter:description' content='Understand code in seconds - powered by AI.' />
-          <meta
-            name='twitter:image'
-            content='https://api.typedream.com/v0/document/public/9233c0d8-da79-4887-8e66-957a4c827ca6_MacBook_Pro_14__-_6_jpeg.jpeg?bucket=document'
-          />
+          <meta name='twitter:image' content='https://ibb.co/ZLVk3qd' />
         </Head>
 
         <body>
