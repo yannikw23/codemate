@@ -11,6 +11,7 @@ class AppDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>CodeMate - Code explained by AI.</title>
           <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=optional' rel='stylesheet' />
           <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
 
