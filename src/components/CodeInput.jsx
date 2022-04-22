@@ -57,7 +57,7 @@ const CodeInput = () => {
 
       if (error) throw new Error(error);
 
-      track('code: send code snippet', { code });
+      // track('code: send code snippet', { code });
       setExplanation(choices);
     } catch (error) {
       showErrorToast(toast, error.message);
