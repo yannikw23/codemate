@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heading, Stack, Text } from '@chakra-ui/react';
 import CodeInput from '../components/CodeInput';
 import CodeContext from '../components/context/CodeContext';
 import HomeLayout from '../components/layouts/HomeLayout';
 import Explanation from '../components/Explanation';
 import Footer from '../components/Footer';
+import { track } from '../lib/utils/analytics';
 
 const Home = () => {
   const [explanation, setExplanation] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    track('page viewed: home page');
+  }, []);
 
   return (
     <CodeContext.Provider

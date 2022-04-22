@@ -39,7 +39,6 @@ const CodeInput = () => {
     setLoading(true);
     try {
       const hasError = checkInputForErrors(code);
-      amplitude.getInstance().logEvent('EVENT_NAME_HERE');
       if (hasError) throw new Error('Please check your input.');
       const res = await fetch(`/api/code/explainCode`, {
         method: 'POST',
@@ -56,12 +55,13 @@ const CodeInput = () => {
         data: { error, choices },
       } = response;
 
+      if (error) throw new Error(error);
+
       track('code: send code snippet', { code });
       setExplanation(choices);
     } catch (error) {
       showErrorToast(toast, error.message);
       track('code: error sending code snippet', { code, error });
-
       console.log('error', error);
     } finally {
       setLoading(false);

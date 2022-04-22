@@ -6,11 +6,7 @@ const env = process.env.NODE_ENV;
 
 const initAnalytics = () => {
   console.log('[Init Analytics]');
-  amplitude.getInstance().init(apiKey || '', undefined, {
-    saveEvents: true,
-    includeUtm: true,
-    includeReferrer: true,
-  });
+  amplitude.getInstance().init(apiKey || '');
 };
 
 const track = (name, props = {}) => {
@@ -23,12 +19,12 @@ const track = (name, props = {}) => {
     browser: browser && browser.name ? browser.name.toLowerCase() : 'unknown',
   };
 
-  // if (env === 'production') {
-  amplitude.getInstance().logEvent(name, updatedProps);
-  // } else {
-  //   // eslint-disable-next-line no-console
-  //   console.info(`[${env}] Logging event to Amplitude`, { name, props: updatedProps });
-  // }
+  if (env === 'production') {
+    amplitude.getInstance().logEvent(name, updatedProps);
+  } else {
+    // eslint-disable-next-line no-console
+    console.info(`[${env}] Logging event to Amplitude`, { name, props: updatedProps });
+  }
 };
 
 export { initAnalytics, track };

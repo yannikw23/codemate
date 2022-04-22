@@ -18,14 +18,15 @@ const Header = () => {
       >
         <Container maxW={{ base: '3xl', xl: '7xl' }}>
           <Text
-            fontSize='4xl'
+            fontSize='3xl'
             bgGradient='linear(to-l, #FF8888,#948BFF)'
             bgClip='text'
             fontWeight='bold'
+            fontStyle='italic'
             cursor='pointer'
             width='max-content'
           >
-            dcode 🦖
+            CodeMate 🦖
           </Text>
         </Container>
       </Stack>

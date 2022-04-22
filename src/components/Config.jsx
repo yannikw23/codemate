@@ -16,6 +16,7 @@ import {
   NumberInputStepper,
 } from '@chakra-ui/react';
 import React from 'react';
+import { track } from '../lib/utils/analytics';
 
 const Config = ({ params, setParams, isOpen, onClose }) => {
   const handleSetParams = (key, value) => {
@@ -23,8 +24,8 @@ const Config = ({ params, setParams, isOpen, onClose }) => {
       ...params,
       [key]: value,
     };
-    console.log('newParams', newParams);
     setParams(newParams);
+    track('params: set new model config', { config: newParams });
   };
 
   return (
