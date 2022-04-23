@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const { Configuration, OpenAIApi } = require('openai');
 const OPENAI_KEY = process.env.OPENAI_API_KEY;
-const MAX_TOKENS = 5000;
+const MAX_TOKENS = 3500;
 
 /**
  * Function to convert string to float value
@@ -42,6 +42,7 @@ const getExplanationFromOpenAI = async (code, params) => {
     presence_penalty: convert_to_float(params?.presencePenalty) || 0.0,
     stop: ['"""'],
   });
+  console.log('response', response);
 
   const { data } = response;
 
@@ -62,7 +63,7 @@ export default async function handler(req, res) {
       data: explanation,
     });
   } catch (error) {
-    console.log('error', error);
+    console.log('error', error.response.data);
     res.send({ status: 500, message: error.message });
   }
 }

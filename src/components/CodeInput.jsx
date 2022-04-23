@@ -12,7 +12,7 @@ import { getRandomCodeSnippet } from '../lib/utils/code';
 import { track } from '../lib/utils/analytics';
 import AIConfig from './Config';
 
-const MAX_INPUT_LENGTH = 5000;
+const MAX_INPUT_LENGTH = 3500;
 const INITIAL_EDITOR_VALUE = `function add(a, b) {\n  return a + b;\n}`;
 
 const CodeInput = () => {
@@ -49,6 +49,7 @@ const CodeInput = () => {
         },
       });
       const response = await res.json();
+      console.log('response', response);
       if (!response || response.status !== 200) throw new Error(response.message || 'No response returned.');
 
       const {
@@ -61,8 +62,8 @@ const CodeInput = () => {
       setExplanation(choices);
     } catch (error) {
       showErrorToast(toast, error.message);
+      console.log('error here', error);
       track('code: error sending code snippet', { code, error });
-      console.log('error', error);
     } finally {
       setLoading(false);
     }
